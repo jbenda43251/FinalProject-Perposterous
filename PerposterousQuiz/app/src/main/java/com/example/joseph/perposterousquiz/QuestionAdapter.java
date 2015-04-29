@@ -12,15 +12,24 @@ import java.util.List;
  */
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHolder> {
 
-    List<Question> answers;
+    boolean correctChoice;
+    List<Answer> answers;
 
-    public QuestionAdapter(List<Question> answers)
+    public QuestionAdapter(List<Answer> answers)
     {
         this.answers = answers;
     }//End Constructor
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.answer, parent, false);
+
+        ViewHolder viewHolder = new ViewHolder(view, new ViewHolder.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                correctChoice = answers.get(position).getCorrectStatus();
+            }
+        });
+        return viewHolder;
     }//End method onCreateViewHolder
 
     public void onBindViewHolder(ViewHolder holder, int i){
