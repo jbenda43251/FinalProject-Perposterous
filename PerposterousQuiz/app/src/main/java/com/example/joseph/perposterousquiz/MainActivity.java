@@ -31,6 +31,9 @@ public class MainActivity extends ActionBarActivity {
         startLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent newAct = new Intent(MainActivity.this, InstructionActivity.class);
+                newAct.putExtra("key", "main menu");
+                startActivity(newAct);
 
             }
         });
