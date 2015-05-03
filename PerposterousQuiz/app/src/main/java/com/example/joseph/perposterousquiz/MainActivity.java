@@ -1,18 +1,22 @@
 package com.example.joseph.perposterousquiz;
-
+import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    FrameLayout fragLay;
+    LinearLayout fragLay;
     LinearLayout startLay;
     LinearLayout creditLay;
     LinearLayout instructionLay;
@@ -21,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fragLay = (FrameLayout) findViewById(R.id.fragment_container);
+        fragLay = (LinearLayout) findViewById(R.id.fragment_container);
 
         startLay = (LinearLayout) findViewById(R.id.StartButton);
         startLay.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
         creditLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newAct = new Intent(MainActivity.this, CreditActivity.class);
+                Intent newAct = new Intent(MainActivity.this, StopActivity.class);
                 newAct.putExtra("key","main menu");
                 startActivity(newAct);
             }
@@ -49,6 +53,15 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(newAct);
             }
         });
+
+
+        ScoreboardFragment scoreFrag = new ScoreboardFragment();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, scoreFrag)
+                .addToBackStack("")
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
 
     }
 

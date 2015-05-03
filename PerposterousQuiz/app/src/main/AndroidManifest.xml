@@ -24,6 +24,10 @@
             android:name=".InstructionActivity"
             android:label="@string/title_activity_instruction" >
         </activity>
+        <activity
+            android:name=".StopActivity"
+            android:label="@string/title_activity_stop" >
+        </activity>
     </application>
 
 </manifest>
