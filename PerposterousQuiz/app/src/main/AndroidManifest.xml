@@ -33,8 +33,13 @@
             android:label="@string/title_activity_game_over" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".CircleActivity"
             android:label="@string/title_activity_circle" >
+=======
+            android:name=".mockedQuestionActivity"
+            android:label="@string/title_activity_mocked_question" >
+>>>>>>> 3365c9a2da00f411c166187cfc5c251dc42074ea
         </activity>
     </application>
 

@@ -4,6 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,6 +36,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     }//End method onCreateViewHolder
 
     public void onBindViewHolder(ViewHolder holder, int i){
+        holder.tvAnswer.setText(answers.get(i).getAnswer());
 
     }//End method onBindViewHolder
 
@@ -45,11 +49,13 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ItemClickListener listener;
+        TextView tvAnswer;
 
         public ViewHolder(View itemView, ItemClickListener listener) {
 
             super(itemView);
             this.listener = listener;
+            tvAnswer = (TextView) itemView.findViewById(R.id.tv_answer);
         }//End Constructor
 
         public void onClick(View view) {listener.onItemClick(view, getPosition());

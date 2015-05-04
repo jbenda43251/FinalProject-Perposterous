@@ -49,7 +49,7 @@ public class ScoreboardFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("sccores", Context.MODE_PRIVATE);
 
         currentScoreTv = (TextView) view.findViewById(R.id.tv_current_score);
         highScoreTv = (TextView) view.findViewById(R.id.tv_high_score);
