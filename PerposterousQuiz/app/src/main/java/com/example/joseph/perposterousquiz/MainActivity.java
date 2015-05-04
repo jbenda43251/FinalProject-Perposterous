@@ -1,17 +1,12 @@
 package com.example.joseph.perposterousquiz;
-import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -51,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         instructionLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newAct = new Intent(MainActivity.this, InstructionActivity.class);
+                Intent newAct = new Intent(MainActivity.this, CircleActivity.class);
                 newAct.putExtra("key","main menu");
                 startActivity(newAct);
             }
