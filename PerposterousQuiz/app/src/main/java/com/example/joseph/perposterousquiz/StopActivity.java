@@ -2,6 +2,7 @@ package com.example.joseph.perposterousquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,39 +19,52 @@ import android.widget.TextView;
 
 public class StopActivity extends ActionBarActivity {
 
-    GridView clock_lay;
-    ImageView hammer_iv;
+    GridView clockLay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop);
-        clock_lay = (GridView) findViewById(R.id.gridview);
-        clock_lay.setAdapter(new ImageAdapter(this));
-        clock_lay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        clockLay = (GridView) findViewById(R.id.gridview);
+        clockLay.setAdapter(new ImageAdapter(this));
+        clockLay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
                 // Send intent to SingleViewActivity
+                SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = pref.edit();
+                int etCurrentScore = pref.getInt("currentScore", 0);
+                int etHighScore = pref.getInt("highScore", 0);
                 if(position != 0) {
                     Intent i =
                             new Intent(getApplicationContext(), GameOverActivity.class);
                     // Pass image index
-                    i.putExtra("id", position);
+                    i.putExtra("score", position);
+                    ed.putInt("currentScore", etCurrentScore - 20);
+                    ed.putInt("highScore", etCurrentScore - 25);
+                    ed.commit();
                     startActivity(i);
+
                 }
                 else
                 {
                     Intent i =
-                            new Intent(getApplicationContext(), MainActivity.class);
+                            new Intent(getApplicationContext(), GameOverActivity.class);
                     // Pass image index
                     i.putExtra("id", position);
+                    ed.putInt("currentScore", etCurrentScore + 1);
+                    ed.putInt("highScore", etCurrentScore + 2);
+                    ed.commit();
                     startActivity(i);
                 }
             }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

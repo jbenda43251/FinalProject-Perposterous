@@ -1,17 +1,41 @@
 package com.example.joseph.perposterousquiz;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class GameOverActivity extends ActionBarActivity {
+    TextView returnTv;
+    TextView scoreTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+
+        scoreTv = (TextView) findViewById(R.id.score_tv);
+        SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+        int etCurrentScore = pref.getInt("currentScore", -1);
+        int etHighScore = pref.getInt("highScore", -1);
+        scoreTv.setText("Your final score is " + Integer.toString(etCurrentScore) + ".\n " +
+                        "Your high score is " + Integer.toString(etHighScore));
+
+        returnTv = (TextView) findViewById(R.id.return_tv);
+        returnTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newAct = new Intent(getApplicationContext(), MainActivity.class);
+                newAct.putExtra("key", "main menu");
+                startActivity(newAct);
+            }
+        });
     }
 
     @Override
@@ -34,5 +58,9 @@ public class GameOverActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
