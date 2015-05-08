@@ -10,16 +10,19 @@ import android.widget.TextView;
 
 public class mockedQuestionActivity extends ActionBarActivity {
 
+    TextView tvQuestion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mocked_question);
+        tvQuestion = (TextView) findViewById(R.id.tv_question);
+        tvQuestion.setText("What is the answer?");
 
-        TextView questionText = (TextView) findViewById(R.id.tv_question);
-        questionText.setText("What is the answer?");
-
+        QuestionRecyclerView qrv = new QuestionRecyclerView();
+        qrv.setArguments(getIntent().getExtras());
         getFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new QuestionRecyclerView())
+                .replace(R.id.recyclerView_container, qrv)
                         // Don't forget this nice little animation!
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();

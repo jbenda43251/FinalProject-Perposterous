@@ -1,5 +1,7 @@
 package com.example.joseph.perposterousquiz;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +19,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
     boolean correctChoice;
     List<Answer> answers;
+    Activity main;
 
-    public QuestionAdapter(List<Answer> answers)
+    public QuestionAdapter(List<Answer> answers, Activity aba)
     {
+        main = aba;
         this.answers = answers;
     }//End Constructor
 
@@ -30,6 +34,17 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             @Override
             public void onItemClick(View view, int position) {
                 correctChoice = answers.get(position).getCorrectStatus();
+
+                if(correctChoice)
+                {
+                    Intent intent = new Intent(main, MainActivity.class);
+                    main.startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(main, GameOverActivity.class);
+                    main.startActivity(intent);
+                }
             }
         });
         return viewHolder;
@@ -56,6 +71,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             super(itemView);
             this.listener = listener;
             tvAnswer = (TextView) itemView.findViewById(R.id.tv_answer);
+            tvAnswer.setOnClickListener(this);
         }//End Constructor
 
         public void onClick(View view) {listener.onItemClick(view, getPosition());

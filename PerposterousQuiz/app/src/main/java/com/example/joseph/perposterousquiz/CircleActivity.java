@@ -1,17 +1,46 @@
 package com.example.joseph.perposterousquiz;
 
+import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class CircleActivity extends ActionBarActivity {
+
+    TextView tvI;
+    ImageView ivCirc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle);
+        tvI = (TextView) findViewById(R.id.Q2);
+        ivCirc = (ImageView) findViewById(R.id.imageView);
+        tvI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent newAct = new Intent(CircleActivity.this, MainActivity.class);
+                startActivity(newAct);
+
+            }
+        });
+
+        ivCirc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent newAct = new Intent(CircleActivity.this, GameOverActivity.class);
+                startActivity(newAct);
+
+            }
+        });
     }
 
 

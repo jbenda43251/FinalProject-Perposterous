@@ -19,9 +19,11 @@ import java.util.List;
 public class QuestionRecyclerView extends Fragment{
 
     private RecyclerView answers;
+    private String creator;
     public QuestionRecyclerView(){
 
     }//End Constructor
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class QuestionRecyclerView extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState){
 
         super.onViewCreated(view, savedInstanceState);
+        creator = getArguments() != null ? getArguments().getString("creator") : "Joseph";
 
         answers = (RecyclerView)view.findViewById(R.id.recycler_answers);
 
@@ -38,20 +41,57 @@ public class QuestionRecyclerView extends Fragment{
 
         answers.setLayoutManager(layoutManager);
 
-        List<Answer> listAnswers = mockAnswers();
 
-        answers.setAdapter(new QuestionAdapter(listAnswers));
+        List<Answer> listAnswers = new ArrayList<>();
+        if(creator.equals("Nathan"))
+        {
+            listAnswers = mockAnswersNathan();
+        }
+        else if (creator.equals("Joseph"))
+        {
+            listAnswers = mockAnswersJoseph();
+        }
+        else
+        {
+            listAnswers = mockAnswersCharles();
+        }
+
+        answers.setAdapter(new QuestionAdapter(listAnswers, getActivity()));
 
     }
 
-    private List<Answer> mockAnswers(){
+    private List<Answer> mockAnswersNathan(){
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add( new Answer("One", true));
+        answers.add(new Answer("One", true));
         answers.add( new Answer("Two", false));
-        answers.add( new Answer("three", false));
-        answers.add( new Answer("four", false));
+        answers.add(new Answer("three", false));
+        answers.add(new Answer("four", false));
+
+        return answers;
+    }
+
+    private List<Answer> mockAnswersJoseph(){
+
+        List<Answer> answers = new ArrayList<>();
+
+        answers.add( new Answer("1", true));
+        answers.add( new Answer("2", false));
+        answers.add( new Answer("3", false));
+        answers.add( new Answer("4", false));
+
+        return answers;
+    }
+
+    private List<Answer> mockAnswersCharles(){
+
+        List<Answer> answers = new ArrayList<>();
+
+        answers.add( new Answer("11", true));
+        answers.add( new Answer("22", false));
+        answers.add( new Answer("33", false));
+        answers.add( new Answer("44", false));
 
         return answers;
     }

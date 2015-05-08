@@ -26,8 +26,9 @@ public class MainActivity extends ActionBarActivity {
         startLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent newAct = new Intent(MainActivity.this, mockedQuestionActivity.class);
-                newAct.putExtra("key", "main menu");
+                newAct.putExtra("creator", "Joseph");
                 startActivity(newAct);
 
             }
