@@ -1,5 +1,6 @@
 package com.example.joseph.perposterousquiz;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,10 +21,17 @@ import android.widget.TextView;
 public class StopActivity extends ActionBarActivity {
 
     GridView clockLay;
+    ScoreboardFragment scoreFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        scoreFrag = new ScoreboardFragment();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, scoreFrag)
+                .addToBackStack("")
+                .commit();
         setContentView(R.layout.activity_stop);
         clockLay = (GridView) findViewById(R.id.gridview);
         clockLay.setAdapter(new ImageAdapter(this));
@@ -113,7 +121,7 @@ public class StopActivity extends ActionBarActivity {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setPadding(8, 8, 8, 8);
+                imageView.setPadding(1, 1, 1, 1);
             } else {
                 imageView = (ImageView) convertView;
             }

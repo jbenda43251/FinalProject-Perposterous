@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -65,13 +66,15 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
         ItemClickListener listener;
         TextView tvAnswer;
+        LinearLayout lay;
 
         public ViewHolder(View itemView, ItemClickListener listener) {
 
             super(itemView);
             this.listener = listener;
             tvAnswer = (TextView) itemView.findViewById(R.id.tv_answer);
-            tvAnswer.setOnClickListener(this);
+            lay = (LinearLayout) itemView.findViewById(R.id.answer_lay);
+            lay.setOnClickListener(this);
         }//End Constructor
 
         public void onClick(View view) {listener.onItemClick(view, getPosition());

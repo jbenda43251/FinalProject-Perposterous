@@ -11,13 +11,28 @@ import android.widget.TextView;
 public class mockedQuestionActivity extends ActionBarActivity {
 
     TextView tvQuestion;
+    String creator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mocked_question);
         tvQuestion = (TextView) findViewById(R.id.tv_question);
-        tvQuestion.setText("What is the answer?");
+
+        creator = getIntent().getStringExtra("creator");
+        if(creator.equals("Joseph"))
+        {
+            tvQuestion.setText("If you have me, you want to share me. " +
+                    "If you share me, you haven't got me. What am I?");
+        }
+        else if (creator.equals("Nathan"))
+        {
+            tvQuestion.setText("What is the answer?");
+        }
+        else
+        {
+            tvQuestion.setText("What is the answer?");
+        }
 
         QuestionRecyclerView qrv = new QuestionRecyclerView();
         qrv.setArguments(getIntent().getExtras());
@@ -50,5 +65,8 @@ public class mockedQuestionActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
     }
 }

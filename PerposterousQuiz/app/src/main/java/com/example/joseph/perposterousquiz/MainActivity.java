@@ -1,12 +1,16 @@
 package com.example.joseph.perposterousquiz;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import java.io.LineNumberReader;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,9 +19,20 @@ public class MainActivity extends ActionBarActivity {
     LinearLayout startLay;
     LinearLayout creditLay;
     LinearLayout instructionLay;
+    LinearLayout resetLay;
+    ScoreboardFragment scoreFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        scoreFrag = new ScoreboardFragment();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, scoreFrag)
+                .addToBackStack("")
+                .commit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragLay = (LinearLayout) findViewById(R.id.fragment_container);
@@ -53,14 +68,22 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        resetLay = (LinearLayout) findViewById(R.id.ResetButton);
+        resetLay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = pref.edit();
+                ed.putInt("currentScore", 0);
+                ed.putInt("highScore", 0);
+                ed.putInt("lowScore", 0);
+                ed.commit();
+                finish();
+                startActivity(getIntent());
+            }
+        });
 
-        ScoreboardFragment scoreFrag = new ScoreboardFragment();
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, scoreFrag)
-                .addToBackStack("")
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit();
 
     }
 

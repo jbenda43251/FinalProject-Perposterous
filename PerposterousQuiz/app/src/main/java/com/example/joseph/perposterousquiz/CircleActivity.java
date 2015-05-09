@@ -15,10 +15,18 @@ public class CircleActivity extends ActionBarActivity {
 
     TextView tvI;
     ImageView ivCirc;
+    ScoreboardFragment scoreFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        scoreFrag = new ScoreboardFragment();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, scoreFrag)
+                .addToBackStack("")
+                .commit();
         setContentView(R.layout.activity_circle);
         tvI = (TextView) findViewById(R.id.Q2);
         ivCirc = (ImageView) findViewById(R.id.imageView);
@@ -64,5 +72,9 @@ public class CircleActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

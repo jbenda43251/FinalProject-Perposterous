@@ -76,10 +76,10 @@ public class QuestionRecyclerView extends Fragment{
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add( new Answer("1", true));
-        answers.add( new Answer("2", false));
-        answers.add( new Answer("3", false));
-        answers.add( new Answer("4", false));
+        answers.add( new Answer("Love", false));
+        answers.add( new Answer("Money", false));
+        answers.add( new Answer("Secret", true));
+        answers.add( new Answer("Pride", false));
 
         return answers;
     }
