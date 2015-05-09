@@ -40,6 +40,10 @@
             android:name=".mockedQuestionActivity"
             android:label="@string/title_activity_mocked_question" >
         </activity>
+        <activity
+            android:name=".SuspiciousButtonActivity"
+            android:label="@string/title_activity_suspicious_button" >
+        </activity>
     </application>
 
 </manifest>

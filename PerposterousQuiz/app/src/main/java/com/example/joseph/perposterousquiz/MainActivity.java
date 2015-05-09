@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
         creditLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newAct = new Intent(MainActivity.this, StopActivity.class);
+                Intent newAct = new Intent(MainActivity.this, SuspiciousButtonActivity.class);
                 newAct.putExtra("key","main menu");
                 startActivity(newAct);
             }
