@@ -64,10 +64,10 @@ public class QuestionRecyclerView extends Fragment{
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add(new Answer("One", true, "Nathan"));
-        answers.add( new Answer("Two", false, "Nathan"));
-        answers.add(new Answer("three", false, "Nathan"));
-        answers.add(new Answer("four", false, "Nathan"));
+        answers.add(new Answer("1: One", false, "Nathan"));
+        answers.add( new Answer("2: One", true, "Nathan"));
+        answers.add(new Answer("3: One", false, "Nathan"));
+        answers.add(new Answer("4: One", false, "Nathan"));
 
         return answers;
     }

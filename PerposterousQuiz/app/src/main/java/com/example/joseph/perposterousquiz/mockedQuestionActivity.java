@@ -27,7 +27,7 @@ public class mockedQuestionActivity extends ActionBarActivity {
         }
         else if (creator.equals("Nathan"))
         {
-            tvQuestion.setText("What is the answer Nathan?");
+            tvQuestion.setText("The answer is the third one down.");
         }
         else
         {
