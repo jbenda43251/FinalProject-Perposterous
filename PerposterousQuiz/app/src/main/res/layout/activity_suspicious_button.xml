@@ -18,7 +18,7 @@ tools:context="com.example.joseph.perposterousquiz.SuspiciousButtonActivity">
     </LinearLayout>
     <TextView
         android:text="Quickly! Make sure to not press the Button!"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_directions"
         android:textSize="25dp"
@@ -27,9 +27,9 @@ tools:context="com.example.joseph.perposterousquiz.SuspiciousButtonActivity">
 
     <Button
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center"
-        android:layout_margin="10dp"
+        android:layout_margin="30dp"
         android:text="Press me! :-D"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"

@@ -37,7 +37,7 @@ public class SuspiciousButtonActivity extends ActionBarActivity {
                 SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
                 SharedPreferences.Editor ed = pref.edit();
                 int etCurrentScore = pref.getInt("currentScore", 0);
-                ed.putInt("currentScore", etCurrentScore - 20);
+                ed.putInt("currentScore", etCurrentScore - 10);
                 ed.commit();
                 timer.cancel(true);
                 startActivity(newAct);

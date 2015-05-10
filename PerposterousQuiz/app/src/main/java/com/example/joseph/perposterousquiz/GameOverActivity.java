@@ -31,7 +31,8 @@ public class GameOverActivity extends ActionBarActivity {
                 etCurrentScore : pref.getInt("lowScore", 0);
 
         scoreTv.setText("Your final score is " + Integer.toString(etCurrentScore) + ".\n " +
-                        "Your high score is " + Integer.toString(etHighScore));
+                        "Your high score is " + Integer.toString(etHighScore) + ".\n" +
+                        "Your low score is " + Integer.toString(etLowScore) + ".");
 
         returnTv = (TextView) findViewById(R.id.return_tv);
         returnTv.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +41,7 @@ public class GameOverActivity extends ActionBarActivity {
 
                 SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
                 SharedPreferences.Editor ed = pref.edit();
-                ed.putInt("currentScore", etCurrentScore);
+                ed.putInt("currentScore", 0);
                 ed.putInt("highScore", etHighScore);
                 ed.putInt("lowScore", etLowScore);
                 ed.commit();
