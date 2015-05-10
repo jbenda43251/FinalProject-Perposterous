@@ -59,4 +59,5 @@ public class ScoreboardFragment extends Fragment {
         highScoreTv.setText("HighScore: " + Integer.toString(prefs.getInt("highScore", 0)));
         lowScoreTv.setText("LowScore: " + Integer.toString(prefs.getInt("lowScore", 0)));
     }
+
 }

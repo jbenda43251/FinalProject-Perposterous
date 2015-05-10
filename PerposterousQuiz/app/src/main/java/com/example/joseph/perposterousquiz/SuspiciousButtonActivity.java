@@ -1,6 +1,8 @@
 package com.example.joseph.perposterousquiz;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,10 +27,19 @@ public class SuspiciousButtonActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent newAct = new Intent(SuspiciousButtonActivity.this, GameOverActivity.class);
+                SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = pref.edit();
+                int etCurrentScore = pref.getInt("currentScore", 0);
+                ed.putInt("currentScore", etCurrentScore - 20);
+                ed.commit();
                 timer.cancel(true);
                 startActivity(newAct);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
 
@@ -60,8 +71,6 @@ public class SuspiciousButtonActivity extends ActionBarActivity {
 
             try {
                 Thread.sleep(6500);
-                Intent newAct = new Intent(SuspiciousButtonActivity.this, MainActivity.class);
-                startActivity(newAct);
 
             } catch (InterruptedException e) {
                 Thread.interrupted();
@@ -71,6 +80,17 @@ public class SuspiciousButtonActivity extends ActionBarActivity {
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            Intent newAct = new Intent(SuspiciousButtonActivity.this, mockedQuestionActivity.class);
+            newAct.putExtra("creator", "Nathan");
+            SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+            SharedPreferences.Editor ed = pref.edit();
+            int etCurrentScore = pref.getInt("currentScore", 0);
+            ed.putInt("currentScore", etCurrentScore + 1);
+            ed.commit();
+            startActivity(newAct);
+        }
     }//End sublcass Timer
 }

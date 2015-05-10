@@ -64,10 +64,10 @@ public class QuestionRecyclerView extends Fragment{
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add(new Answer("One", true));
-        answers.add( new Answer("Two", false));
-        answers.add(new Answer("three", false));
-        answers.add(new Answer("four", false));
+        answers.add(new Answer("One", true, "Nathan"));
+        answers.add( new Answer("Two", false, "Nathan"));
+        answers.add(new Answer("three", false, "Nathan"));
+        answers.add(new Answer("four", false, "Nathan"));
 
         return answers;
     }
@@ -76,10 +76,10 @@ public class QuestionRecyclerView extends Fragment{
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add( new Answer("Love", false));
-        answers.add( new Answer("Money", false));
-        answers.add( new Answer("Secret", true));
-        answers.add( new Answer("Pride", false));
+        answers.add( new Answer("Love", false, "Joseph"));
+        answers.add( new Answer("Money", false, "Joseph"));
+        answers.add( new Answer("Secret", true, "Joseph"));
+        answers.add( new Answer("Pride", false, "Joseph"));
 
         return answers;
     }
@@ -88,10 +88,10 @@ public class QuestionRecyclerView extends Fragment{
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add( new Answer("11", true));
-        answers.add( new Answer("22", false));
-        answers.add( new Answer("33", false));
-        answers.add( new Answer("44", false));
+        answers.add( new Answer("11", true, "Charles"));
+        answers.add( new Answer("22", false, "Charles"));
+        answers.add( new Answer("33", false, "Charles"));
+        answers.add( new Answer("44", false, "Charles"));
 
         return answers;
     }

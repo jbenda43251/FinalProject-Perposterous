@@ -42,8 +42,11 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                Intent newAct = new Intent(MainActivity.this, mockedQuestionActivity.class);
-                newAct.putExtra("creator", "Joseph");
+                SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = pref.edit();
+                ed.putInt("currentScore", 0);
+                ed.commit();
+                Intent newAct = new Intent(MainActivity.this, SuspiciousButtonActivity.class);
                 startActivity(newAct);
 
             }
@@ -52,8 +55,7 @@ public class MainActivity extends ActionBarActivity {
         creditLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newAct = new Intent(MainActivity.this, SuspiciousButtonActivity.class);
-                newAct.putExtra("key","main menu");
+                Intent newAct = new Intent(MainActivity.this, CreditActivity.class);
                 startActivity(newAct);
             }
         });
@@ -62,8 +64,7 @@ public class MainActivity extends ActionBarActivity {
         instructionLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newAct = new Intent(MainActivity.this, CircleActivity.class);
-                newAct.putExtra("key","main menu");
+                Intent newAct = new Intent(MainActivity.this, InstructionActivity.class);
                 startActivity(newAct);
             }
         });

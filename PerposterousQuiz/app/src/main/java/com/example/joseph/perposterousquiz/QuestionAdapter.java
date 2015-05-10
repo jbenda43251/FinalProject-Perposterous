@@ -1,7 +1,9 @@
 package com.example.joseph.perposterousquiz;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,14 +37,47 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             @Override
             public void onItemClick(View view, int position) {
                 correctChoice = answers.get(position).getCorrectStatus();
-
                 if(correctChoice)
                 {
-                    Intent intent = new Intent(main, MainActivity.class);
-                    main.startActivity(intent);
+                    if(answers.get(position).creator.equals("Nathan"))
+                    {
+                        SharedPreferences pref = main.getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = pref.edit();
+                        int etCurrentScore = pref.getInt("currentScore", 0);
+                        ed.putInt("currentScore", etCurrentScore + 1);
+                        ed.commit();
+                        Intent intent = new Intent(main, StopActivity.class);
+                        main.startActivity(intent);
+                    }
+                    else if (answers.get(position).creator.equals("Joseph"))
+                    {
+                        SharedPreferences pref = main.getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = pref.edit();
+                        int etCurrentScore = pref.getInt("currentScore", 0);
+                        ed.putInt("currentScore", etCurrentScore + 1);
+                        ed.commit();
+                        Intent intent = new Intent(main, CircleActivity.class);
+                        main.startActivity(intent);
+                    }
+                    else
+                    {
+                        SharedPreferences pref = main.getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor ed = pref.edit();
+                        int etCurrentScore = pref.getInt("currentScore", 0);
+                        ed.putInt("currentScore", etCurrentScore + 1);
+                        ed.commit();
+                        Intent intent = new Intent(main, GameOverActivity.class);
+                        main.startActivity(intent);
+                    }
+
                 }
                 else
                 {
+                    SharedPreferences pref = main.getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor ed = pref.edit();
+                    int etCurrentScore = pref.getInt("currentScore", 0);
+                    ed.putInt("currentScore", etCurrentScore - 20);
+                    ed.commit();
                     Intent intent = new Intent(main, GameOverActivity.class);
                     main.startActivity(intent);
                 }

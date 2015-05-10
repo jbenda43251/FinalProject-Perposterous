@@ -27,11 +27,11 @@ public class mockedQuestionActivity extends ActionBarActivity {
         }
         else if (creator.equals("Nathan"))
         {
-            tvQuestion.setText("What is the answer?");
+            tvQuestion.setText("What is the answer Nathan?");
         }
         else
         {
-            tvQuestion.setText("What is the answer?");
+            tvQuestion.setText("What is the answer Charles?");
         }
 
         QuestionRecyclerView qrv = new QuestionRecyclerView();

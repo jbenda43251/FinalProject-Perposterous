@@ -1,6 +1,8 @@
 package com.example.joseph.perposterousquiz;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -34,7 +36,13 @@ public class CircleActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                Intent newAct = new Intent(CircleActivity.this, MainActivity.class);
+                SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = pref.edit();
+                int etCurrentScore = pref.getInt("currentScore", 0);
+                ed.putInt("currentScore", etCurrentScore + 1);
+                ed.commit();
+                Intent newAct = new Intent(CircleActivity.this, mockedQuestionActivity.class);
+                newAct.putExtra("creator", "Charles");
                 startActivity(newAct);
 
             }
@@ -43,6 +51,12 @@ public class CircleActivity extends ActionBarActivity {
         ivCirc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
+                SharedPreferences.Editor ed = pref.edit();
+                int etCurrentScore = pref.getInt("currentScore", 0);
+                ed.putInt("currentScore", etCurrentScore - 20);
+                ed.commit();
 
                 Intent newAct = new Intent(CircleActivity.this, GameOverActivity.class);
                 startActivity(newAct);

@@ -6,11 +6,13 @@ package com.example.joseph.perposterousquiz;
 public class Answer {
     public String potentialAnswer;
     public boolean correct;
+    public String creator;
 
-    public Answer(String potentialAnswer, boolean correct)
+    public Answer(String potentialAnswer, boolean correct, String c)
     {
         this.potentialAnswer = potentialAnswer;
         this.correct = correct;
+        this.creator = c;
     }//End constructor
 
     public String getAnswer(){

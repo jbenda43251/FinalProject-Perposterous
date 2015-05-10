@@ -43,14 +43,12 @@ public class StopActivity extends ActionBarActivity {
                 SharedPreferences pref = getSharedPreferences("sccores", Context.MODE_PRIVATE);
                 SharedPreferences.Editor ed = pref.edit();
                 int etCurrentScore = pref.getInt("currentScore", 0);
-                int etHighScore = pref.getInt("highScore", 0);
                 if(position != 0) {
                     Intent i =
                             new Intent(getApplicationContext(), GameOverActivity.class);
                     // Pass image index
                     i.putExtra("score", position);
                     ed.putInt("currentScore", etCurrentScore - 20);
-                    ed.putInt("highScore", etCurrentScore - 25);
                     ed.commit();
                     startActivity(i);
 
@@ -58,11 +56,11 @@ public class StopActivity extends ActionBarActivity {
                 else
                 {
                     Intent i =
-                            new Intent(getApplicationContext(), GameOverActivity.class);
+                            new Intent(getApplicationContext(), mockedQuestionActivity.class);
+                    i.putExtra("creator", "Joseph");
                     // Pass image index
                     i.putExtra("id", position);
                     ed.putInt("currentScore", etCurrentScore + 1);
-                    ed.putInt("highScore", etCurrentScore + 2);
                     ed.commit();
                     startActivity(i);
                 }
