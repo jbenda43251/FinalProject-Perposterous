@@ -2,8 +2,6 @@ package com.example.joseph.perposterousquiz;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -88,10 +86,10 @@ public class QuestionRecyclerView extends Fragment{
 
         List<Answer> answers = new ArrayList<>();
 
-        answers.add( new Answer("11", true, "Charles"));
-        answers.add( new Answer("22", false, "Charles"));
-        answers.add( new Answer("33", false, "Charles"));
-        answers.add( new Answer("44", false, "Charles"));
+        answers.add( new Answer("Plug the leak", false, "Charles"));
+        answers.add( new Answer("Swim away", false, "Charles"));
+        answers.add( new Answer("Shoot the Gators", false, "Charles"));
+        answers.add( new Answer("Stop Imagining", true, "Charles"));
 
         return answers;
     }

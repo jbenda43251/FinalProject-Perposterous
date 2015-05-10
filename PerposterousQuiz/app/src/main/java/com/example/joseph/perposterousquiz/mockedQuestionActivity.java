@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class mockedQuestionActivity extends ActionBarActivity {
 
+    ScoreboardFragment scoreFrag;
     TextView tvQuestion;
     String creator;
 
@@ -18,6 +19,12 @@ public class mockedQuestionActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mocked_question);
         tvQuestion = (TextView) findViewById(R.id.tv_question);
+        scoreFrag = new ScoreboardFragment();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.scoreboard_container, scoreFrag)
+                .addToBackStack("")
+                .commit();
 
         creator = getIntent().getStringExtra("creator");
         if(creator.equals("Joseph"))
@@ -31,7 +38,7 @@ public class mockedQuestionActivity extends ActionBarActivity {
         }
         else
         {
-            tvQuestion.setText("What is the answer Charles?");
+            tvQuestion.setText("Imagine your in a sinking boat and there is alligators trying to eat you. How do you save yourself?");
         }
 
         QuestionRecyclerView qrv = new QuestionRecyclerView();

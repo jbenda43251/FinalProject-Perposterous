@@ -14,6 +14,7 @@ import android.widget.Button;
 
 public class SuspiciousButtonActivity extends ActionBarActivity {
 
+    ScoreboardFragment scoreFrag;
     Timer timer = new Timer();
     Button button;
     @Override
@@ -21,6 +22,12 @@ public class SuspiciousButtonActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suspicious_button);
         timer.execute();
+        scoreFrag = new ScoreboardFragment();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, scoreFrag)
+                .addToBackStack("")
+                .commit();
 
         button = (Button) findViewById(R.id.bt_suspicious);
         button.setOnClickListener(new View.OnClickListener(){
